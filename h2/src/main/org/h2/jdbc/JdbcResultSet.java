@@ -18,6 +18,7 @@ import java.sql.Ref;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
 import java.sql.Time;
@@ -3552,5 +3553,16 @@ public class JdbcResultSet extends TraceObject implements ResultSet {
             throw Message.getSQLException(ErrorCode.RESULT_SET_READONLY);
         }
     }
+
+	@Override
+	public <T> T getObject(int columnIndex, Class<T> type) throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public <T> T getObject(String columnLabel, Class<T> type)
+			throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
 
 }

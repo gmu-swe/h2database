@@ -10,6 +10,7 @@ import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.Statement;
 
@@ -964,6 +965,16 @@ public class JdbcStatement extends TraceObject implements Statement {
     public String toString() {
         return getTraceObjectName();
     }
+
+	@Override
+	public void closeOnCompletion() throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public boolean isCloseOnCompletion() throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
 
 }
 

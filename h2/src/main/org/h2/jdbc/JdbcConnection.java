@@ -16,11 +16,13 @@ import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLWarning;
 import java.sql.Savepoint;
 import java.sql.Statement;
 import java.util.Map;
 import java.util.Properties;
+import java.util.concurrent.Executor;
 
 import org.h2.command.CommandInterface;
 import org.h2.constant.ErrorCode;
@@ -1645,5 +1647,31 @@ public class JdbcConnection extends TraceObject implements Connection {
         }
         return o;
     }
+
+	@Override
+	public void setSchema(String schema) throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public String getSchema() throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public void abort(Executor executor) throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public void setNetworkTimeout(Executor executor, int milliseconds)
+			throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public int getNetworkTimeout() throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
 
 }

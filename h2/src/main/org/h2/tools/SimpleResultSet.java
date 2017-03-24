@@ -2110,4 +2110,15 @@ public class SimpleResultSet implements ResultSet, ResultSetMetaData {
     }
 ## Java 1.6 end ##*/
 
+	@Override
+	public <T> T getObject(int columnIndex, Class<T> type) throws SQLException {
+        throw getUnsupportedException();
+	}
+
+	@Override
+	public <T> T getObject(String columnLabel, Class<T> type)
+			throws SQLException {
+        throw getUnsupportedException();
+	}
+
 }

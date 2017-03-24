@@ -11,7 +11,9 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.naming.Reference;
 import javax.naming.Referenceable;
@@ -364,5 +366,10 @@ implements XADataSource, DataSource, ConnectionPoolDataSource, Serializable, Ref
     public String toString() {
         return getTraceObjectName() + ": url=" + url + " user=" + user;
     }
+
+	@Override
+	public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        throw new SQLFeatureNotSupportedException();
+	}
 
 }

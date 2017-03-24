@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.RowIdLifetime;
 ## Java 1.6 end ##*/
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 
 import org.h2.constant.SysProperties;
 import org.h2.engine.Constants;
@@ -2863,5 +2864,17 @@ public class JdbcDatabaseMetaData extends TraceObject implements DatabaseMetaDat
     public String toString() {
         return getTraceObjectName() + ": " + conn;
     }
+
+	@Override
+	public ResultSet getPseudoColumns(String catalog, String schemaPattern,
+			String tableNamePattern, String columnNamePattern)
+			throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public boolean generatedKeyAlwaysReturned() throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
 
 }

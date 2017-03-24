@@ -18,6 +18,7 @@ import java.sql.Date;
 import java.sql.Ref;
 /*## Java 1.6 begin ##
 import java.sql.NClob;
+import java.sql.SQLFeatureNotSupportedException;
 import java.sql.SQLXML;
 import java.sql.RowId;
 ## Java 1.6 end ##*/
@@ -915,5 +916,17 @@ public class JdbcCallableStatement extends JdbcPreparedStatement implements Call
     private SQLException throwGetUnsupportedException() throws JdbcSQLException {
         throw Message.getUnsupportedException("get");
     }
+
+	@Override
+	public <T> T getObject(int parameterIndex, Class<T> type)
+			throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
+
+	@Override
+	public <T> T getObject(String parameterName, Class<T> type)
+			throws SQLException {
+		throw new SQLFeatureNotSupportedException();
+	}
 
 }
