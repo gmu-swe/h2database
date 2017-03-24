@@ -50,7 +50,7 @@ public class JdbcSQLException extends SQLException {
         this.stackTrace = stackTrace;
         buildMessage();
 //## Java 1.4 begin ##
-        initCause(cause);
+//        initCause(cause);
 //## Java 1.4 end ##
     }
 
